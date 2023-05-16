@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "tapestop",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "",
+  "name": "Tape Stop",
+  "description": "Stops Anything that is Rendering as You Leave.",
   "authors": [
     "KrLite"
   ],
   "contact": {
     "homepage": "https://github.com/KrLite",
-    "sources": "https://github.com/KrLite/Example-Mod"
+    "sources": "https://github.com/KrLite/Tape-Stop"
   },
 
   "license": "GPL-3.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/tapestop/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.krlite.modid.ExampleMod"
+      "net.krlite.tapestop.TapeStop"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "tapestop.mixins.json"
   ],
 
   "depends": {
