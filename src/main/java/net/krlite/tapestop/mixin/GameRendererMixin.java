@@ -31,7 +31,7 @@ public class GameRendererMixin {
 	@Redirect(method = "render", at = @At(value = "FIELD", target = "Lnet/minecraft/client/MinecraftClient;skipGameRender:Z", opcode = Opcodes.GETFIELD))
 	private boolean skipGameRender(MinecraftClient client) {
 		boolean skip = TapeStop.shouldTapeStop(client.currentScreen);
-		if (skip){
+		if (skip) {
 			Window window = MinecraftClient.getInstance().getWindow();
 			RenderSystem.clear(256, MinecraftClient.IS_SYSTEM_MAC);
 
