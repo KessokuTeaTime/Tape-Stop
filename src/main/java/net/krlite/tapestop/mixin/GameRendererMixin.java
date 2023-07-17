@@ -2,15 +2,15 @@ package net.krlite.tapestop.mixin;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.systems.VertexSorter;
 import net.krlite.tapestop.TapeStop;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayers;
+import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.BlockModelRenderer;
 import net.minecraft.client.util.Window;
 import net.minecraft.client.util.math.MatrixStack;
@@ -38,9 +38,8 @@ public class GameRendererMixin {
 			RenderSystem.clear(256, MinecraftClient.IS_SYSTEM_MAC);
 
 			Matrix4f matrix4f = (new Matrix4f()).setOrtho(0.0F, (float) ((double) window.getFramebufferWidth() / window.getScaleFactor()), (float) ((double) window.getFramebufferHeight() / window.getScaleFactor()), 0.0F, 1000.0F, 3000.0F);
-			RenderSystem.setProjectionMatrix(matrix4f, VertexSorter.BY_Z);
-			DrawContext context = new DrawContext(client, client.getBufferBuilders().getEntityVertexConsumers());
-			MatrixStack matrixStack = context.getMatrices();
+			RenderSystem.setProjectionMatrix(matrix4f);
+			MatrixStack matrixStack = RenderSystem.getModelViewStack();
 
 			matrixStack.push();
 			matrixStack.loadIdentity();
@@ -59,7 +58,8 @@ public class GameRendererMixin {
 
 			else {
 				backgroundColor:{
-					context.fill(
+					DrawableHelper.fill(
+							new MatrixStack(),
 							0, 0,
 							window.getFramebufferWidth(),
 							window.getFramebufferHeight(),
@@ -73,27 +73,30 @@ public class GameRendererMixin {
 					Quaternionf modifier = RotationAxis.POSITIVE_Y.rotationDegrees(22.5F)
 												   .mul(RotationAxis.POSITIVE_X.rotationDegrees(22.5F))
 												   .mul(RotationAxis.POSITIVE_Y.rotationDegrees(offset * 360.0F));
+					MatrixStack modelMatrixStack = new MatrixStack();
 
 					RenderSystem.enableBlend();
 					RenderSystem.blendFunc(GlStateManager.SrcFactor.SRC_ALPHA, GlStateManager.DstFactor.ONE_MINUS_SRC_ALPHA);
 					RenderSystem.setShaderColor(1, 1, 1, 1);
 
-					matrixStack.push();
-					matrixStack.translate(
+					modelMatrixStack.push();
+					modelMatrixStack.translate(
 							MinecraftClient.getInstance().getWindow().getScaledWidth() / 2.0F,
 							MinecraftClient.getInstance().getWindow().getScaledHeight() / 2.0F,
 							500
 					);
 
-					matrixStack.scale(1, -1, 1);
-					matrixStack.scale(85, 85, 1);
-					matrixStack.multiply(modifier);
+					modelMatrixStack.scale(1, -1, 1);
+					modelMatrixStack.scale(85, 85, 1);
+					modelMatrixStack.multiply(modifier);
 
 					RenderSystem.applyModelViewMatrix();
 					RenderSystem.disableCull();
 					RenderSystem.enableDepthTest();
 
-					matrixStack.translate(-0.5, -0.5, -0.5);
+					modelMatrixStack.translate(-0.5, -0.5, -0.5);
+
+					VertexConsumerProvider.Immediate immediate = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
 
 					float
 							red = (float) (TapeStop.color() >> 16 & 0xFF) / 255.0F,
@@ -101,16 +104,16 @@ public class GameRendererMixin {
 							blue = (float) (TapeStop.color() & 0xFF) / 255.0F;
 
 					new BlockModelRenderer(MinecraftClient.getInstance().getBlockColors()).render(
-							matrixStack.peek(), context.getVertexConsumers().getBuffer(RenderLayers.getBlockLayer(blockState)), blockState,
+							modelMatrixStack.peek(), immediate.getBuffer(RenderLayers.getBlockLayer(blockState)), blockState,
 							MinecraftClient.getInstance().getBlockRenderManager().getModel(blockState),
 							red, green, blue, 0xF000F0, OverlayTexture.DEFAULT_UV
 					);
 
-					context.draw();
+					immediate.draw();
 					RenderSystem.enableCull();
 					RenderSystem.disableDepthTest();
 
-					matrixStack.pop();
+					modelMatrixStack.pop();
 					RenderSystem.applyModelViewMatrix();
 				}
 

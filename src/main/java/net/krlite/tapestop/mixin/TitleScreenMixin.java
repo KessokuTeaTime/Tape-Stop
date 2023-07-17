@@ -1,9 +1,9 @@
 package net.krlite.tapestop.mixin;
 
 import net.krlite.tapestop.TapeStop;
-import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.RotatingCubeMapRenderer;
 import net.minecraft.client.gui.screen.TitleScreen;
+import net.minecraft.client.util.math.MatrixStack;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -16,7 +16,7 @@ public class TitleScreenMixin {
 	@Shadow @Final private RotatingCubeMapRenderer backgroundRenderer;
 
 	@Inject(method = "render", at = @At("RETURN"))
-	private void updateCubeMapRenderer(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
+	private void updateCubeMapRenderer(MatrixStack matrixStack, int mouseX, int mouseY, float delta, CallbackInfo ci) {
 		TapeStop.cubeMapRenderer(backgroundRenderer);
 	}
 }
