@@ -44,7 +44,7 @@ public class TapeStop implements ModInitializer {
 
 	private static long lastActionTime = 0, tapeStopTime;
 	private static int color;
-	private static RotatingCubeMapRenderer cubeMapRenderer;
+	private static @Nullable RotatingCubeMapRenderer cubeMapRenderer;
 
 	@Override
 	public void onInitialize() {
@@ -88,11 +88,11 @@ public class TapeStop implements ModInitializer {
 		lastActionTime = Util.getMeasuringTimeMs();
 	}
 
-	public static RotatingCubeMapRenderer cubeMapRenderer() {
+	@Nullable public static RotatingCubeMapRenderer cubeMapRenderer() {
 		return cubeMapRenderer;
 	}
 
-	public static void cubeMapRenderer(RotatingCubeMapRenderer cubeMapRenderer) {
+	public static void cubeMapRenderer(@Nullable RotatingCubeMapRenderer cubeMapRenderer) {
 		TapeStop.cubeMapRenderer = cubeMapRenderer;
 	}
 

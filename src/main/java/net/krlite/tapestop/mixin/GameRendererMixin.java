@@ -19,6 +19,7 @@ import net.minecraft.util.math.Quaternion;
 import net.minecraft.util.math.Vec3f;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -26,7 +27,9 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.Locale;
 
 @Mixin(GameRenderer.class)
-public class GameRendererMixin {
+public abstract class GameRendererMixin {
+	@Shadow public abstract boolean isRenderingPanorama();
+
 	@Unique
 	private boolean skipped = false;
 
@@ -46,7 +49,7 @@ public class GameRendererMixin {
 			matrixStack.translate(0.0F, 0.0F, -2000.0F);
 			RenderSystem.applyModelViewMatrix();
 
-			if (TapeStop.CONFIG.panorama()) {
+			if (TapeStop.CONFIG.panorama() && TapeStop.cubeMapRenderer() != null) {
 				panorama: {
 					TapeStop.cubeMapRenderer().render(MinecraftClient.getInstance().getLastFrameDuration(), 1);
 				}
