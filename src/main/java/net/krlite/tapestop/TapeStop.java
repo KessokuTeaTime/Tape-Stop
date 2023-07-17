@@ -10,6 +10,7 @@ import net.minecraft.client.gui.screen.multiplayer.MultiplayerWarningScreen;
 import net.minecraft.client.gui.screen.option.*;
 import net.minecraft.client.gui.screen.world.*;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Util;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.glfw.GLFW;
@@ -34,8 +35,8 @@ public class TapeStop implements ModInitializer {
 
 			DownloadingTerrainScreen.class, LevelLoadingScreen.class, ChatScreen.class, CreateWorldScreen.class,
 			EditGameRulesScreen.class, EditWorldScreen.class, OptimizeWorldScreen.class,
-			SelectWorldScreen.class, MessageScreen.class, NoticeScreen.class, OpenToLanScreen.class, PresetsScreen.class,
-			Realms32BitWarningScreen.class, SleepingChatScreen.class, StatsScreen.class, WarningScreen.class,
+			SelectWorldScreen.class, NoticeScreen.class, OpenToLanScreen.class, PresetsScreen.class,
+			SleepingChatScreen.class, StatsScreen.class,
 
 			MultiplayerScreen.class, MultiplayerWarningScreen.class, AddServerScreen.class, DirectConnectScreen.class,
 			DisconnectedScreen.class
@@ -96,6 +97,6 @@ public class TapeStop implements ModInitializer {
 	}
 
 	public static Text localize(String category, String... paths) {
-		return Text.translatable(category + "." + ID + "." + String.join(".", paths));
+		return new TranslatableText(category + "." + ID + "." + String.join(".", paths));
 	}
 }
