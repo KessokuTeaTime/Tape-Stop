@@ -1,7 +1,3 @@
-### <p align=right>[`→` Modrinth](https://modrinth.com/mod/tape-stop)</p>
+### <p align=right>[Main Branch `←`](https://github.com/KrLite/Tape-Stop)&emsp;[`→` Modrinth](https://modrinth.com/mod/tape-stop)</p>
 
-# Tape Stop
-
-## License
-
-**Tape Stop** is available under the **[GNU Public License.](LICENSE)**
+### Tape Stop for `1.19~1.19.2`
