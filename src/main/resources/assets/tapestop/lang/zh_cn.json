@@ -1,0 +1,35 @@
+{
+  "screen.tapestop.config.title": "停碟",
+
+  "config.tapestop.category.general": "通用",
+
+  "config.tapestop.general.enabled":         "启用停碟",
+  "config.tapestop.general.enabled.tooltip": "§7是否在你离开游戏时停止游戏渲染",
+
+  "config.tapestop.general.timeoutMs": 	       "停碟超时",
+  "config.tapestop.general.timeoutMs.tooltip": "§c毫秒\n§7在停碟之前等待的时间",
+
+  "config.tapestop.category.trigger": "触发规则",
+
+  "config.tapestop.trigger.whenMinimized":         "最小化时",
+  "config.tapestop.trigger.whenMinimized.tooltip": "§7是否在游戏窗口最小化时停碟",
+
+  "config.tapestop.trigger.whenLostFocus":         "失去焦点时",
+  "config.tapestop.trigger.whenLostFocus.tooltip": "§7是否在游戏窗口失去焦点时停碟",
+
+  "config.tapestop.trigger.afterGUITimeout":         "GUI超时",
+  "config.tapestop.trigger.afterGUITimeout.tooltip": "§7是否在游戏处在GUI界面（例如背包和暂停界面）\n并达到设置的超时时间后停碟",
+
+  "config.tapestop.trigger.afterGameTimeout":         "游戏超时",
+  "config.tapestop.trigger.afterGameTimeout.tooltip": "§7是否在游戏不处在GUI界面并达到设置的超时时间\n后停碟",
+
+  "config.tapestop.category.visual": "视觉效果",
+
+  "config.tapestop.visual.panorama":         "全景图",
+  "config.tapestop.visual.panorama.tooltip": "§7是否在停碟时渲染全景图",
+
+  "config.tapestop.category.debug": "调试",
+
+  "config.tapestop.debug.debug":         "调试信息",
+  "config.tapestop.debug.debug.tooltip": "§7是否在控制台中输出调试信息"
+}

@@ -1,12 +1,15 @@
 package net.krlite.tapestop;
 
 import net.fabricmc.api.ModInitializer;
+import net.krlite.tapestop.config.TapeStopConfig;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.RotatingCubeMapRenderer;
 import net.minecraft.client.gui.screen.*;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerWarningScreen;
 import net.minecraft.client.gui.screen.option.*;
 import net.minecraft.client.gui.screen.world.*;
+import net.minecraft.text.Text;
 import net.minecraft.util.Util;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.glfw.GLFW;
@@ -40,29 +43,27 @@ public class TapeStop implements ModInitializer {
 
 	private static long lastActionTime = 0, tapeStopTime;
 	private static int color;
-	private static float delta;
+	private static RotatingCubeMapRenderer cubeMapRenderer;
 
 	@Override
 	public void onInitialize() {
-		CONFIG.load();
 		CONFIG.save();
 	}
 
 	public static boolean shouldTapeStop(@Nullable Screen screen) {
-		if (!CONFIG.enabled || MinecraftClient.getInstance().world == null) return false;
+		if (!CONFIG.enabled() || MinecraftClient.getInstance().world == null) return false;
 
-		if (CONFIG.whenMinimized && GLFW.glfwGetWindowAttrib(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_ICONIFIED) == GLFW.GLFW_TRUE) return true;
+		if (CONFIG.whenMinimized() && GLFW.glfwGetWindowAttrib(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_ICONIFIED) == GLFW.GLFW_TRUE) return true;
 
-		if (CONFIG.whenLostFocus && !MinecraftClient.getInstance().isWindowFocused()) return true;
+		if (CONFIG.whenLostFocus() && !MinecraftClient.getInstance().isWindowFocused()) return true;
 
-		if (screen == null && CONFIG.afterGameTimeout && isTimeout()) return true;
+		if (screen == null && CONFIG.afterGameTimeout() && isTimeout()) return true;
 
 		if (screen != null && !Arrays.asList(excluded).contains(screen.getClass())
-					&& CONFIG.afterGUITimeout && isTimeout()) return true;
+					&& CONFIG.afterGUITimeout() && isTimeout()) return true;
 
 		tapeStopTime = Util.getMeasuringTimeMs();
 		color = 0xFF000000 | randomColorBits() << 16 | randomColorBits() << 8 | randomColorBits();
-		delta = 0;
 		return false;
 	}
 
@@ -78,19 +79,23 @@ public class TapeStop implements ModInitializer {
 		return color;
 	}
 
-	public static float delta() {
-		return delta;
-	}
-
 	public static boolean isTimeout() {
-		return Util.getMeasuringTimeMs() - lastActionTime > CONFIG.timeoutMs;
+		return Util.getMeasuringTimeMs() - lastActionTime > CONFIG.timeoutMs();
 	}
 
 	public static void action() {
 		lastActionTime = Util.getMeasuringTimeMs();
 	}
 
-	public static void tick() {
-		delta += MinecraftClient.getInstance().getLastFrameDuration();
+	public static RotatingCubeMapRenderer cubeMapRenderer() {
+		return cubeMapRenderer;
+	}
+
+	public static void cubeMapRenderer(RotatingCubeMapRenderer cubeMapRenderer) {
+		TapeStop.cubeMapRenderer = cubeMapRenderer;
+	}
+
+	public static Text localize(String category, String... paths) {
+		return Text.translatable(category + "." + ID + "." + String.join(".", paths));
 	}
 }

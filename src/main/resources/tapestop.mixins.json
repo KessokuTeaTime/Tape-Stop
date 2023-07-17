@@ -9,7 +9,8 @@
 	"ActionTrigger$KeyboardMixin",
 	"ActionTrigger$MouseMixin",
 	"GameRendererMixin",
-	"MinecraftClientMixin"
+	"MinecraftClientMixin",
+	"TitleScreenMixin"
   ],
   "injectors": {
 	"defaultRequire": 0
