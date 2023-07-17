@@ -30,12 +30,12 @@ public class TapeStop implements ModInitializer {
 			AccessibilityOptionsScreen.class, ChatOptionsScreen.class, ControlsOptionsScreen.class,
 			GameOptionsScreen.class, KeybindsScreen.class, LanguageOptionsScreen.class,
 			MouseOptionsScreen.class, OnlineOptionsScreen.class, OptionsScreen.class, SkinOptionsScreen.class,
-			SoundOptionsScreen.class, TelemetryInfoScreen.class, VideoOptionsScreen.class,
+			SoundOptionsScreen.class, VideoOptionsScreen.class,
 
 			DownloadingTerrainScreen.class, LevelLoadingScreen.class, ChatScreen.class, CreateWorldScreen.class,
 			EditGameRulesScreen.class, EditWorldScreen.class, OptimizeWorldScreen.class,
 			SelectWorldScreen.class, MessageScreen.class, NoticeScreen.class, OpenToLanScreen.class, PresetsScreen.class,
-			Realms32BitWarningScreen.class, SleepingChatScreen.class, StatsScreen.class, TaskScreen.class, WarningScreen.class,
+			Realms32BitWarningScreen.class, SleepingChatScreen.class, StatsScreen.class, WarningScreen.class,
 
 			MultiplayerScreen.class, MultiplayerWarningScreen.class, AddServerScreen.class, DirectConnectScreen.class,
 			DisconnectedScreen.class

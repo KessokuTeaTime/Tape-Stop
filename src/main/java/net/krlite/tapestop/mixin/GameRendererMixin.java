@@ -14,9 +14,9 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.BlockModelRenderer;
 import net.minecraft.client.util.Window;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.math.RotationAxis;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
+import net.minecraft.util.math.Matrix4f;
+import net.minecraft.util.math.Quaternion;
+import net.minecraft.util.math.Vec3f;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -37,7 +37,7 @@ public class GameRendererMixin {
 			Window window = MinecraftClient.getInstance().getWindow();
 			RenderSystem.clear(256, MinecraftClient.IS_SYSTEM_MAC);
 
-			Matrix4f matrix4f = (new Matrix4f()).setOrtho(0.0F, (float) ((double) window.getFramebufferWidth() / window.getScaleFactor()), (float) ((double) window.getFramebufferHeight() / window.getScaleFactor()), 0.0F, 1000.0F, 3000.0F);
+			Matrix4f matrix4f = Matrix4f.projectionMatrix(0.0F, (float) ((double) window.getFramebufferWidth() / window.getScaleFactor()), 0.0F, (float) ((double) window.getFramebufferHeight() / window.getScaleFactor()), 1000.0F, 3000.0F);
 			RenderSystem.setProjectionMatrix(matrix4f);
 			MatrixStack matrixStack = RenderSystem.getModelViewStack();
 
@@ -70,9 +70,6 @@ public class GameRendererMixin {
 				grassBlockModel: {
 					float offset = System.currentTimeMillis() % 27500 / 27500.0F;
 					BlockState blockState = Blocks.GRASS_BLOCK.getDefaultState();
-					Quaternionf modifier = RotationAxis.POSITIVE_Y.rotationDegrees(22.5F)
-												   .mul(RotationAxis.POSITIVE_X.rotationDegrees(22.5F))
-												   .mul(RotationAxis.POSITIVE_Y.rotationDegrees(offset * 360.0F));
 					MatrixStack modelMatrixStack = new MatrixStack();
 
 					RenderSystem.enableBlend();
@@ -88,7 +85,11 @@ public class GameRendererMixin {
 
 					modelMatrixStack.scale(1, -1, 1);
 					modelMatrixStack.scale(85, 85, 1);
-					modelMatrixStack.multiply(modifier);
+
+					modelMatrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(22.5F));
+					modelMatrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(22.5F));
+					modelMatrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(offset * 360.0F));
+
 
 					RenderSystem.applyModelViewMatrix();
 					RenderSystem.disableCull();
