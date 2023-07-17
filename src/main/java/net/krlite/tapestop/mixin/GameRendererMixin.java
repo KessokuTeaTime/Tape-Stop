@@ -47,7 +47,7 @@ public class GameRendererMixin {
 			matrixStack.translate(0.0F, 0.0F, -2000.0F);
 			RenderSystem.applyModelViewMatrix();
 
-			if (TapeStop.CONFIG.panorama()) {
+			if (TapeStop.CONFIG.panorama() && TapeStop.cubeMapRenderer() != null) {
 				panorama: {
 					TapeStop.cubeMapRenderer().render(MinecraftClient.getInstance().getLastFrameDuration(), 1);
 				}
