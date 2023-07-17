@@ -25,15 +25,15 @@ public class TapeStop implements ModInitializer {
 	public static final TapeStopConfig CONFIG = new TapeStopConfig();
 
 	private static final Class<?>[] excluded = new Class[]{
-			TitleScreen.class, DemoScreen.class, AccessibilityOnboardingScreen.class, SplashOverlay.class,
+			TitleScreen.class, DemoScreen.class, SplashOverlay.class,
 
 			AccessibilityOptionsScreen.class, ChatOptionsScreen.class, ControlsOptionsScreen.class,
-			CreditsAndAttributionScreen.class, GameOptionsScreen.class, KeybindsScreen.class, LanguageOptionsScreen.class,
+			GameOptionsScreen.class, KeybindsScreen.class, LanguageOptionsScreen.class,
 			MouseOptionsScreen.class, OnlineOptionsScreen.class, OptionsScreen.class, SkinOptionsScreen.class,
 			SoundOptionsScreen.class, TelemetryInfoScreen.class, VideoOptionsScreen.class,
 
 			DownloadingTerrainScreen.class, LevelLoadingScreen.class, ChatScreen.class, CreateWorldScreen.class,
-			EditGameRulesScreen.class, EditWorldScreen.class, ExperimentsScreen.class, OptimizeWorldScreen.class,
+			EditGameRulesScreen.class, EditWorldScreen.class, OptimizeWorldScreen.class,
 			SelectWorldScreen.class, MessageScreen.class, NoticeScreen.class, OpenToLanScreen.class, PresetsScreen.class,
 			Realms32BitWarningScreen.class, SleepingChatScreen.class, StatsScreen.class, TaskScreen.class, WarningScreen.class,
 
