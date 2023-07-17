@@ -4,4 +4,4 @@
 
 ## License
 
-This repository is available under the **[GNU Public License.](LICENSE)**
+**Tape Stop** is available under the **[GNU Public License.](LICENSE)**
