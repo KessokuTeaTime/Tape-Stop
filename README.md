@@ -11,7 +11,7 @@ You can configure a various of things in the **Mod Menu.** Generously, **Tape St
     <li>
       <details>
         <summary>
-          Render a rotating grass block.
+          Render a rotating grass block with random background color.
         </summary>
         <img src="artwork/content/rotating_grass_block.png?raw=true" />
       </details>
