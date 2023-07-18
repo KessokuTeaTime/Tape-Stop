@@ -13,7 +13,7 @@ You can configure a various of things in the **Mod Menu.** Generously, **Tape St
         <summary>
           Render a rotating grass block with random background color.
         </summary>
-        <img src="artwork/content/rotating_grass_block.png?raw=true" />
+        <img src="https://github.com/KrLite/Tape-Stop/blob/artwork/content/rotating_grass_block.png?raw=true" />
       </details>
     </li>
     <li>
@@ -21,7 +21,7 @@ You can configure a various of things in the **Mod Menu.** Generously, **Tape St
         <summary>
           Rendering the panorama.
         </summary>
-        <img src="artwork/content/panorama.png?raw=true" />
+        <img src="https://github.com/KrLite/Tape-Stop/blob/artwork/content/panorama.png?raw=true" />
       </details>
     </li>
   </ol>
