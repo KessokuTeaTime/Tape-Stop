@@ -1,4 +1,4 @@
-### <p align=right>[`→` Modrinth](https://modrinth.com/mod/tape-stop)</p>
+### <p align=right>[`→` Modrinth](https://modrinth.com/mod/tapestop)</p>
 
 # Tape Stop
 
