@@ -29,4 +29,4 @@ You can configure a various of things in the **Mod Menu.** Generously, **Tape St
 
 ## License
 
-**Tape Stop** is available under the **[GNU Public License.](LICENSE)**
+**Tape Stop** is licensed under the **[GNU General Public License v3.](LICENSE)**
