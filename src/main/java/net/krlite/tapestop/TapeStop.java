@@ -42,7 +42,7 @@ public class TapeStop implements ModInitializer {
 	};
 
 	private static long lastActionTime = 0, tapeStopTime;
-	private static int color;
+	private static int blockColor, color;
 	private static @Nullable RotatingCubeMapRenderer cubeMapRenderer;
 
 	@Override
@@ -63,16 +63,28 @@ public class TapeStop implements ModInitializer {
 					&& CONFIG.afterGUITimeout() && isTimeout()) return true;
 
 		tapeStopTime = Util.getMeasuringTimeMs();
-		color = 0xFF000000 | randomColorBits() << 16 | randomColorBits() << 8 | randomColorBits();
+		blockColor = 0xFF000000 | randomColorBits() << 16 | randomColorBits() << 8 | randomColorBits();
+		color = brighten(blockColor());
 		return false;
 	}
 
 	private static int randomColorBits() {
-		return new Random().nextInt(0x3C) | 0x10;
+		int color = new Random().nextInt(0x10, 0x3C);
+		return color <= 0x10 ? 0 : color;
+	}
+
+	private static int brighten(int color) {
+		if (color <= 0) return 0;
+		double factor = new Random().nextDouble();
+		return (int) (color + (0xFFFFFF - color) * factor);
 	}
 
 	public static long tapeStopTime() {
 		return tapeStopTime;
+	}
+
+	public static int blockColor() {
+		return blockColor;
 	}
 
 	public static int color() {

@@ -96,9 +96,9 @@ public class GameRendererMixin {
 					matrixStack.translate(-0.5, -0.5, -0.5);
 
 					float
-							red = (float) (TapeStop.color() >> 16 & 0xFF) / 255.0F,
-							green = (float) (TapeStop.color() >> 8 & 0xFF) / 255.0F,
-							blue = (float) (TapeStop.color() & 0xFF) / 255.0F;
+							red = (float) (TapeStop.blockColor() >> 16 & 0xFF) / 255.0F,
+							green = (float) (TapeStop.blockColor() >> 8 & 0xFF) / 255.0F,
+							blue = (float) (TapeStop.blockColor() & 0xFF) / 255.0F;
 
 					new BlockModelRenderer(MinecraftClient.getInstance().getBlockColors()).render(
 							matrixStack.peek(), context.getVertexConsumers().getBuffer(RenderLayers.getBlockLayer(blockState)), blockState,
