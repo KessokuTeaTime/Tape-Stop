@@ -28,6 +28,7 @@ public class TapeStopConfig extends Pierced {
 		save();
 	}
 
+	@Comment("Must be between " + minTimeoutMs + " and " + maxTimeoutMs + ".")
 	private long timeoutMs = 2000;
 
 	public static final @Silent long minTimeoutMs = 1000, maxTimeoutMs = 1000 * 60;
