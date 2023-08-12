@@ -4,6 +4,7 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.systems.VertexSorter;
 import net.krlite.tapestop.TapeStop;
+import net.krlite.tapestop.TapeStopRenderer;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
@@ -49,7 +50,7 @@ public class GameRendererMixin {
 
 			if (TapeStop.CONFIG.panorama() && TapeStop.cubeMapRenderer() != null) {
 				panorama: {
-					TapeStop.cubeMapRenderer().render(MinecraftClient.getInstance().getLastFrameDuration(), 1);
+					TapeStopRenderer.renderPanorama();
 				}
 
 				if (!skipped) {
@@ -58,64 +59,12 @@ public class GameRendererMixin {
 			}
 
 			else {
-				backgroundColor:{
-					context.fill(
-							0, 0,
-							window.getFramebufferWidth(),
-							window.getFramebufferHeight(),
-							TapeStop.color()
-					);
-				}
-
-				grassBlockModel: {
-					float offset = System.currentTimeMillis() % 27500 / 27500.0F;
-					BlockState blockState = Blocks.GRASS_BLOCK.getDefaultState();
-					Quaternionf modifier = RotationAxis.POSITIVE_Y.rotationDegrees(22.5F)
-												   .mul(RotationAxis.POSITIVE_X.rotationDegrees(22.5F))
-												   .mul(RotationAxis.POSITIVE_Y.rotationDegrees(offset * 360.0F));
-
-					RenderSystem.enableBlend();
-					RenderSystem.blendFunc(GlStateManager.SrcFactor.SRC_ALPHA, GlStateManager.DstFactor.ONE_MINUS_SRC_ALPHA);
-					RenderSystem.setShaderColor(1, 1, 1, 1);
-
-					matrixStack.push();
-					matrixStack.translate(
-							MinecraftClient.getInstance().getWindow().getScaledWidth() / 2.0F,
-							MinecraftClient.getInstance().getWindow().getScaledHeight() / 2.0F,
-							500
-					);
-
-					matrixStack.scale(1, -1, 1);
-					matrixStack.scale(85, 85, 1);
-					matrixStack.multiply(modifier);
-
-					RenderSystem.applyModelViewMatrix();
-					RenderSystem.disableCull();
-					RenderSystem.enableDepthTest();
-
-					matrixStack.translate(-0.5, -0.5, -0.5);
-
-					float
-							red = (float) (TapeStop.blockColor() >> 16 & 0xFF) / 255.0F,
-							green = (float) (TapeStop.blockColor() >> 8 & 0xFF) / 255.0F,
-							blue = (float) (TapeStop.blockColor() & 0xFF) / 255.0F;
-
-					new BlockModelRenderer(MinecraftClient.getInstance().getBlockColors()).render(
-							matrixStack.peek(), context.getVertexConsumers().getBuffer(RenderLayers.getBlockLayer(blockState)), blockState,
-							MinecraftClient.getInstance().getBlockRenderManager().getModel(blockState),
-							red, green, blue, 0xF000F0, OverlayTexture.DEFAULT_UV
-					);
-
-					context.draw();
-					RenderSystem.enableCull();
-					RenderSystem.disableDepthTest();
-
-					matrixStack.pop();
-					RenderSystem.applyModelViewMatrix();
+				grassBlock: {
+					TapeStopRenderer.renderGrassBlock(context);
 				}
 
 				if (!skipped) {
-					TapeStop.LOGGER.info("Tape stopped. Rendering overlay with background color 0x" + Integer.toHexString(TapeStop.color()).toUpperCase(Locale.ROOT));
+					TapeStop.LOGGER.info("Tape stopped. Rendering overlay with background color " + String.format("#%06x", TapeStop.color() & 0xFFFFFF).toUpperCase(Locale.ROOT));
 				}
 			}
 

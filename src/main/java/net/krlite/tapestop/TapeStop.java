@@ -16,6 +16,8 @@ import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -48,6 +50,7 @@ public class TapeStop implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		CONFIG.save();
+		updateColors();
 	}
 
 	public static boolean shouldTapeStop(@Nullable Screen screen) {
@@ -63,9 +66,13 @@ public class TapeStop implements ModInitializer {
 					&& CONFIG.afterGUITimeout() && isTimeout()) return true;
 
 		tapeStopTime = Util.getMeasuringTimeMs();
-		blockColor = 0xFF000000 | randomColorBits() << 16 | randomColorBits() << 8 | randomColorBits();
-		color = brighten(blockColor());
+		updateColors();
 		return false;
+	}
+
+	private static void updateColors() {
+		blockColor = randomColorBits() << 16 | randomColorBits() << 8 | randomColorBits();
+		color = brighten(blockColor);
 	}
 
 	private static int randomColorBits() {
@@ -75,8 +82,17 @@ public class TapeStop implements ModInitializer {
 
 	private static int brighten(int color) {
 		if (color <= 0) return 0;
-		double factor = new Random().nextDouble();
-		return (int) (color + (0xFFFFFF - color) * factor);
+
+		Color hslColor = new Color(color);
+		float[] hsl = Color.RGBtoHSB(hslColor.getRed(), hslColor.getGreen(), hslColor.getBlue(), null);
+
+		float[] factors = new float[]{ 1, new Random().nextFloat(1.9F, 2.2F), new Random().nextFloat(2.3F, 3.1F) };
+		for (int i = 0; i < 3; i++) {
+			hsl[i] *= factors[i];
+			hsl[i] = Math.max(0, Math.min(1, hsl[i]));
+		}
+
+		return Color.HSBtoRGB(hsl[0], hsl[1], hsl[2]);
 	}
 
 	public static long tapeStopTime() {
@@ -84,11 +100,11 @@ public class TapeStop implements ModInitializer {
 	}
 
 	public static int blockColor() {
-		return blockColor;
+		return 0xFF000000 | blockColor;
 	}
 
 	public static int color() {
-		return color;
+		return 0xFF000000 | color;
 	}
 
 	public static boolean isTimeout() {
