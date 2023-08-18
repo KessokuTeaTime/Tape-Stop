@@ -99,9 +99,9 @@ public class GameRendererMixin {
 					VertexConsumerProvider.Immediate immediate = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
 
 					float
-							red = (float) (TapeStop.color() >> 16 & 0xFF) / 255.0F,
-							green = (float) (TapeStop.color() >> 8 & 0xFF) / 255.0F,
-							blue = (float) (TapeStop.color() & 0xFF) / 255.0F;
+							red = (float) (TapeStop.blockColor() >> 16 & 0xFF) / 255.0F,
+							green = (float) (TapeStop.blockColor() >> 8 & 0xFF) / 255.0F,
+							blue = (float) (TapeStop.blockColor() & 0xFF) / 255.0F;
 
 					new BlockModelRenderer(MinecraftClient.getInstance().getBlockColors()).render(
 							modelMatrixStack.peek(), immediate.getBuffer(RenderLayers.getBlockLayer(blockState)), blockState,
