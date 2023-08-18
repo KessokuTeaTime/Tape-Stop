@@ -13,7 +13,7 @@ You can configure a various of things in the **Mod Menu.** Generously, **Tape St
         <summary>
           Render a rotating grass block with random background color.
         </summary>
-        <img src="https://github.com/KrLite/Tape-Stop/blob/artwork/content/rotating_grass_block.png" />
+        <img src="https://github.com/KrLite/Tape-Stop/blob/artwork/content/rotating_grass_block_new.png" />
       </details>
     </li>
     <li>
