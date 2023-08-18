@@ -9,8 +9,7 @@ import net.krlite.pierced.config.Pierced;
 import java.io.File;
 
 public class TapeStopConfig extends Pierced {
-	@Silent
-	private static final File file = FabricLoader.getInstance().getConfigDir().resolve("tapestop.toml").toFile();
+	private static @Silent final File file = FabricLoader.getInstance().getConfigDir().resolve("tapestop.toml").toFile();
 
 	public TapeStopConfig() {
 		super(TapeStopConfig.class, file);
