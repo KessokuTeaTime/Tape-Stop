@@ -16,6 +16,7 @@ import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.awt.*;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -42,7 +43,7 @@ public class TapeStop implements ModInitializer {
 	};
 
 	private static long lastActionTime = 0, tapeStopTime;
-	private static int color;
+	private static int blockColor, color;
 	private static @Nullable RotatingCubeMapRenderer cubeMapRenderer;
 
 	@Override
@@ -67,12 +68,37 @@ public class TapeStop implements ModInitializer {
 		return false;
 	}
 
+	private static void updateColors() {
+		blockColor = randomColorBits() << 16 | randomColorBits() << 8 | randomColorBits();
+		color = brighten(blockColor);
+	}
+
 	private static int randomColorBits() {
-		return new Random().nextInt(0x3C) | 0x10;
+		int color = new Random().nextInt(0x10, 0x3C);
+		return color <= 0x10 ? 0 : color;
+	}
+
+	private static int brighten(int color) {
+		if (color <= 0) return 0;
+
+		Color hslColor = new Color(color);
+		float[] hsl = Color.RGBtoHSB(hslColor.getRed(), hslColor.getGreen(), hslColor.getBlue(), null);
+
+		float[] factors = new float[]{ 1, new Random().nextFloat(1.9F, 2.2F), new Random().nextFloat(2.3F, 3.1F) };
+		for (int i = 0; i < 3; i++) {
+			hsl[i] *= factors[i];
+			hsl[i] = Math.max(0, Math.min(1, hsl[i]));
+		}
+
+		return Color.HSBtoRGB(hsl[0], hsl[1], hsl[2]);
 	}
 
 	public static long tapeStopTime() {
 		return tapeStopTime;
+	}
+
+	public static int blockColor() {
+		return blockColor;
 	}
 
 	public static int color() {
