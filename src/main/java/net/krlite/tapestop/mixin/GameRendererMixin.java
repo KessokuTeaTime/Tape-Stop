@@ -118,7 +118,7 @@ public class GameRendererMixin {
 				}
 
 				if (!skipped) {
-					TapeStop.LOGGER.info("Tape stopped. Rendering overlay with background color 0x" + Integer.toHexString(TapeStop.color()).toUpperCase(Locale.ROOT));
+					TapeStop.LOGGER.info("Tape stopped. Rendering overlay with background color " + String.format("#%06x", TapeStop.color() & 0xFFFFFF).toUpperCase(Locale.ROOT));
 				}
 			}
 
