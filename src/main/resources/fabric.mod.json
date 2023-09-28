@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Tape Stop",
-  "description": "Stops Anything that is Rendering as You Leave.",
+  "description": "Stops Anything from Rendering as You Leave.",
   "authors": [
     "KrLite"
   ],
