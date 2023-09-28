@@ -1,23 +1,15 @@
-package net.krlite.tapestop.mixin;
+package net.krlite.tape_stop.mixin;
 
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.systems.VertexSorter;
-import net.krlite.tapestop.TapeStop;
-import net.krlite.tapestop.TapeStopRenderer;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import net.krlite.tape_stop.TapeStop;
+import net.krlite.tape_stop.TapeStopRenderer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.GameRenderer;
-import net.minecraft.client.render.OverlayTexture;
-import net.minecraft.client.render.RenderLayers;
-import net.minecraft.client.render.block.BlockModelRenderer;
 import net.minecraft.client.util.Window;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.math.RotationAxis;
 import org.joml.Matrix4f;
-import org.joml.Quaternionf;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;

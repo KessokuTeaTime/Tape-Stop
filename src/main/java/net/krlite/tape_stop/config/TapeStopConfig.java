@@ -1,4 +1,4 @@
-package net.krlite.tapestop.config;
+package net.krlite.tape_stop.config;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.krlite.pierced.annotation.Comment;

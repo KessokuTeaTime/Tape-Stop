@@ -1,6 +1,6 @@
-package net.krlite.tapestop.mixin;
+package net.krlite.tape_stop.mixin;
 
-import net.krlite.tapestop.TapeStop;
+import net.krlite.tape_stop.TapeStop;
 import net.minecraft.client.MinecraftClient;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

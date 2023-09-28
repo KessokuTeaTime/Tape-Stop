@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "tapestop",
+  "id": "tape_stop",
   "version": "${version}",
 
   "name": "Tape Stop",
@@ -14,19 +14,19 @@
   },
 
   "license": "GPL-3.0",
-  "icon": "assets/tapestop/icon.png",
+  "icon": "assets/tape_stop/icon.png",
 
   "environment": "client",
   "entrypoints": {
     "main": [
-      "net.krlite.tapestop.TapeStop"
+      "net.krlite.tape_stop.TapeStop"
     ],
     "modmenu": [
-      "net.krlite.tapestop.config.modmenu.TapeStopModMenuImpl"
+      "net.krlite.tape_stop.config.modmenu.TapeStopModMenuImpl"
     ]
   },
   "mixins": [
-    "tapestop.mixins.json"
+    "tape_stop.mixins.json"
   ],
 
   "depends": {

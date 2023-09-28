@@ -1,8 +1,7 @@
-package net.krlite.tapestop.config.modmenu;
+package net.krlite.tape_stop.config.modmenu;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
-import net.minecraft.client.MinecraftClient;
 
 public class TapeStopModMenuImpl implements ModMenuApi {
 	@Override

@@ -1,7 +1,7 @@
-package net.krlite.tapestop;
+package net.krlite.tape_stop;
 
 import net.fabricmc.api.ModInitializer;
-import net.krlite.tapestop.config.TapeStopConfig;
+import net.krlite.tape_stop.config.TapeStopConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.RotatingCubeMapRenderer;
 import net.minecraft.client.gui.screen.*;
@@ -17,12 +17,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 public class TapeStop implements ModInitializer {
-	public static final String NAME = "Tape Stop", ID = "tapestop";
+	public static final String NAME = "Tape Stop", ID = "tape_stop";
 	public static final Logger LOGGER = LoggerFactory.getLogger(ID);
 	public static final TapeStopConfig CONFIG = new TapeStopConfig();
 
