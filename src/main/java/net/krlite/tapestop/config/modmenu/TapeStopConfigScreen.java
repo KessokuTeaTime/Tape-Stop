@@ -51,7 +51,7 @@ public class TapeStopConfigScreen {
 						CONFIG.timeoutMs(),
 						TapeStopConfig.minTimeoutMs, TapeStopConfig.maxTimeoutMs
 				)
-								 .setDefaultValue(25000)
+								 .setDefaultValue(1000 * 30)
 								 .setTooltip(TapeStop.localize("config", "general", "timeoutMs", "tooltip"))
 								 .setSaveConsumer(CONFIG::timeoutMs)
 								 .build());
