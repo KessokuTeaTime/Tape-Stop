@@ -1,35 +1,35 @@
 {
-  "screen.tape_stop.config.title": "Tape Stop",
+  "screen.tapestop.config.title": "Tape Stop",
 
-  "config.tape_stop.category.general": "General",
+  "config.tapestop.category.general": "General",
 
-  "config.tape_stop.general.enabled":         "Enabled",
-  "config.tape_stop.general.enabled.tooltip": "§7Whether to stop rendering as you leave",
+  "config.tapestop.general.enabled":         "Enabled",
+  "config.tapestop.general.enabled.tooltip": "§7Whether to stop rendering as you leave",
 
-  "config.tape_stop.general.timeoutMs": 	       "Timeout",
-  "config.tape_stop.general.timeoutMs.tooltip": "§cMilliseconds\n§7How long to wait before tape stops",
+  "config.tapestop.general.timeoutMs": 	       "Timeout",
+  "config.tapestop.general.timeoutMs.tooltip": "§cMilliseconds\n§7How long to wait before tape stops",
 
-  "config.tape_stop.category.trigger": "Trigger",
+  "config.tapestop.category.trigger": "Trigger",
 
-  "config.tape_stop.trigger.whenMinimized":         "When Minimized",
-  "config.tape_stop.trigger.whenMinimized.tooltip": "§7Whether to tape stop when the window is minimized",
+  "config.tapestop.trigger.whenMinimized":         "When Minimized",
+  "config.tapestop.trigger.whenMinimized.tooltip": "§7Whether to tape stop when the window is minimized",
 
-  "config.tape_stop.trigger.whenLostFocus":         "When Lost Focus",
-  "config.tape_stop.trigger.whenLostFocus.tooltip": "§7Whether to tape stop when the window lost focus",
+  "config.tapestop.trigger.whenLostFocus":         "When Lost Focus",
+  "config.tapestop.trigger.whenLostFocus.tooltip": "§7Whether to tape stop when the window lost focus",
 
-  "config.tape_stop.trigger.afterGUITimeout":         "After GUI Timeout",
-  "config.tape_stop.trigger.afterGUITimeout.tooltip": "§7Whether to tape stop when the game is in a GUI\nscreen(inventory, pause menu, etc.) and reaches\nthe timeout specified above",
+  "config.tapestop.trigger.afterGUITimeout":         "After GUI Timeout",
+  "config.tapestop.trigger.afterGUITimeout.tooltip": "§7Whether to tape stop when the game is in a GUI\nscreen(inventory, pause menu, etc.) and reaches\nthe timeout specified above",
 
-  "config.tape_stop.trigger.afterGameTimeout":         "After Game Timeout",
-  "config.tape_stop.trigger.afterGameTimeout.tooltip": "§7Whether to tape stop when the game is not in\na GUI screen and reaches the timeout specified above",
+  "config.tapestop.trigger.afterGameTimeout":         "After Game Timeout",
+  "config.tapestop.trigger.afterGameTimeout.tooltip": "§7Whether to tape stop when the game is not in\na GUI screen and reaches the timeout specified above",
 
-  "config.tape_stop.category.visual": "Visual",
+  "config.tapestop.category.visual": "Visual",
 
-  "config.tape_stop.visual.panorama":         "Panorama",
-  "config.tape_stop.visual.panorama.tooltip": "§7Whether to render the panorama background while\ntape stopped",
+  "config.tapestop.visual.panorama":         "Panorama",
+  "config.tapestop.visual.panorama.tooltip": "§7Whether to render the panorama background while\ntape stopped",
 
-  "config.tape_stop.category.debug": "Debug",
+  "config.tapestop.category.debug": "Debug",
 
-  "config.tape_stop.debug.debug":         "Debug",
-  "config.tape_stop.debug.debug.tooltip": "§7Whether to print debug messages to the console"
+  "config.tapestop.debug.debug":         "Debug",
+  "config.tapestop.debug.debug.tooltip": "§7Whether to print debug messages to the console"
 }

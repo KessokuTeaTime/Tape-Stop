@@ -19,10 +19,10 @@
   "environment": "client",
   "entrypoints": {
     "main": [
-      "net.krlite.tape_stop.TapeStop"
+      "net.krlite.tapestop.TapeStop"
     ],
     "modmenu": [
-      "net.krlite.tape_stop.config.modmenu.TapeStopModMenuImpl"
+      "net.krlite.tapestop.config.modmenu.TapeStopModMenuImpl"
     ]
   },
   "mixins": [
