@@ -1,9 +1,9 @@
-package net.krlite.tape_stop.mixin;
+package net.krlite.tapestop.mixin;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.systems.VertexSorter;
-import net.krlite.tape_stop.TapeStop;
-import net.krlite.tape_stop.TapeStopRenderer;
+import net.krlite.tapestop.TapeStop;
+import net.krlite.tapestop.TapeStopRenderer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.GameRenderer;

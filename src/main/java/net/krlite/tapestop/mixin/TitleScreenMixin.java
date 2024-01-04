@@ -1,6 +1,6 @@
-package net.krlite.tape_stop.mixin;
+package net.krlite.tapestop.mixin;
 
-import net.krlite.tape_stop.TapeStop;
+import net.krlite.tapestop.TapeStop;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.RotatingCubeMapRenderer;
 import net.minecraft.client.gui.screen.TitleScreen;

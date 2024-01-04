@@ -1,15 +1,16 @@
-package net.krlite.tape_stop.config;
+package net.krlite.tapestop.config;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.krlite.pierced.annotation.Comment;
 import net.krlite.pierced.annotation.Silent;
 import net.krlite.pierced.annotation.Table;
 import net.krlite.pierced.config.Pierced;
+import net.krlite.tapestop.TapeStop;
 
 import java.io.File;
 
 public class TapeStopConfig extends Pierced {
-	private static @Silent final File file = FabricLoader.getInstance().getConfigDir().resolve("tapestop.toml").toFile();
+	private static @Silent final File file = FabricLoader.getInstance().getConfigDir().resolve(TapeStop.ID + ".toml").toFile();
 
 	public TapeStopConfig() {
 		super(TapeStopConfig.class, file);

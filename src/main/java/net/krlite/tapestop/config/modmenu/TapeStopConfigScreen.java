@@ -1,13 +1,13 @@
-package net.krlite.tape_stop.config.modmenu;
+package net.krlite.tapestop.config.modmenu;
 
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
-import net.krlite.tape_stop.TapeStop;
-import net.krlite.tape_stop.config.TapeStopConfig;
+import net.krlite.tapestop.TapeStop;
+import net.krlite.tapestop.config.TapeStopConfig;
 import net.minecraft.client.gui.screen.Screen;
 
-import static net.krlite.tape_stop.TapeStop.CONFIG;
+import static net.krlite.tapestop.TapeStop.CONFIG;
 
 public class TapeStopConfigScreen {
 	public TapeStopConfigScreen(Screen parent) {

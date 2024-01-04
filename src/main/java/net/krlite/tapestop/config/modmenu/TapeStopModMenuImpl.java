@@ -1,4 +1,4 @@
-package net.krlite.tape_stop.config.modmenu;
+package net.krlite.tapestop.config.modmenu;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
