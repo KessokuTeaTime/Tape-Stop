@@ -109,14 +109,14 @@ public class TapeStopConfig extends Pierced {
 
 	@Table("Debug")
 	@Comment("Prints debug messages to the console.")
-	private boolean debug = true;
+	private boolean debugEnabled = true;
 
-	public boolean debug() {
-		return debug;
+	public boolean debugEnabled() {
+		return debugEnabled;
 	}
 
-	public void debug(boolean debug) {
-		this.debug = debug;
+	public void debugEnabled(boolean debug) {
+		this.debugEnabled = debug;
 		save();
 	}
 }
