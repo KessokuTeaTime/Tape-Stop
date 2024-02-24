@@ -1,122 +1,54 @@
 package net.krlite.tapestop.config;
 
-import net.fabricmc.loader.api.FabricLoader;
-import net.krlite.pierced.annotation.Comment;
-import net.krlite.pierced.annotation.Silent;
-import net.krlite.pierced.annotation.Table;
-import net.krlite.pierced.config.Pierced;
+import me.shedaniel.autoconfig.ConfigData;
+import me.shedaniel.autoconfig.annotation.Config;
+import me.shedaniel.autoconfig.annotation.ConfigEntry;
+import me.shedaniel.clothconfig2.gui.entries.SelectionListEntry;
 import net.krlite.tapestop.TapeStop;
+import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
+@Config(name = "tapestop")
+public class TapeStopConfig implements ConfigData {
+	public boolean enabled = true;
 
-public class TapeStopConfig extends Pierced {
-	private static @Silent final File file = FabricLoader.getInstance().getConfigDir().resolve(TapeStop.ID + ".toml").toFile();
+	public boolean debugInfoEnabled = true;
 
-	public TapeStopConfig() {
-		super(TapeStopConfig.class, file);
-		load();
+	@ConfigEntry.BoundedDiscrete(min = 1000, max = 1000 * 60 * 5)
+	public long timeoutMs = 1000 * 30;
+
+	@ConfigEntry.Gui.TransitiveObject
+	@ConfigEntry.Category("trigger")
+	public Trigger trigger = new Trigger();
+
+	@ConfigEntry.Gui.TransitiveObject
+	@ConfigEntry.Category("visual")
+	public Visual visual = new Visual();
+
+	public static class Trigger {
+		public boolean whenMinimized = true;
+		public boolean whenLostFocus = true;
+		public boolean afterGUITimeout = true;
+		public boolean afterGameTimeout = true;
 	}
 
-	private boolean enabled = true;
-
-	public boolean enabled() {
-		return enabled;
+	public static class Visual {
+		@ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
+		public BackgroundStyle backgroundStyle = BackgroundStyle.PURE_COLOR;
 	}
 
-	public void enabled(boolean enabled) {
-		this.enabled = enabled;
-		save();
-	}
+	public enum BackgroundStyle implements SelectionListEntry.Translatable {
+		PURE_COLOR("config." + TapeStop.ID + ".background_style.pure_color"),
+		PANORAMA("config." + TapeStop.ID + ".background_style.panorama");
 
-	@Comment("Must be between " + minTimeoutMs + " and " + maxTimeoutMs + ".")
-	private long timeoutMs = 1000 * 30;
+		private final String key;
 
-	public static final @Silent long minTimeoutMs = 1000, maxTimeoutMs = 1000 * 60 * 5;
+        BackgroundStyle(String key) {
+            this.key = key;
+        }
 
-	public long timeoutMs() {
-		return timeoutMs;
-	}
-
-	public void timeoutMs(long timeoutMs) {
-		this.timeoutMs = timeoutMs;
-		save();
-	}
-
-	@Table("Trigger")
-	@Comment("Tape stops when the game is minimized.")
-	private boolean whenMinimized = true;
-
-	public boolean whenMinimized() {
-		return whenMinimized;
-	}
-
-	public void whenMinimized(boolean whenMinimized) {
-		this.whenMinimized = whenMinimized;
-		save();
-	}
-
-	@Table("Trigger")
-	@Comment("Tape stops when the game loses focus.")
-	private boolean whenLostFocus = true;
-
-	public boolean whenLostFocus() {
-		return whenLostFocus;
-	}
-
-	public void whenLostFocus(boolean whenLostFocus) {
-		this.whenLostFocus = whenLostFocus;
-		save();
-	}
-
-	@Table("Trigger")
-	@Comment("Tape stops when the game is in a GUI screen(inventory, pause menu, etc.) and reaches the timeout specified above.")
-	private boolean afterGUITimeout = true;
-
-	public boolean afterGUITimeout() {
-		return afterGUITimeout;
-	}
-
-	public void afterGUITimeout(boolean afterGUITimeout) {
-		this.afterGUITimeout = afterGUITimeout;
-		save();
-	}
-
-	@Table("Trigger")
-	@Comment("Tape stops when the game is not in a GUI screen and reaches the timeout specified above.")
-	private boolean afterGameTimeout = true;
-
-	public boolean afterGameTimeout() {
-		return afterGameTimeout;
-	}
-
-	public void afterGameTimeout(boolean afterGameTimeout) {
-		this.afterGameTimeout = afterGameTimeout;
-		save();
-	}
-
-	@Table("Visual")
-	@Comment("Renders the panorama background while tape stopped.")
-	private boolean panorama = false;
-
-	public boolean panorama() {
-		return panorama;
-	}
-
-	public void panorama(boolean panorama) {
-		this.panorama = panorama;
-		save();
-	}
-
-	@Table("Debug")
-	@Comment("Prints debug messages to the console.")
-	private boolean debugEnabled = true;
-
-	public boolean debugEnabled() {
-		return debugEnabled;
-	}
-
-	public void debugEnabled(boolean debug) {
-		this.debugEnabled = debug;
-		save();
+        @Override
+		public @NotNull String getKey() {
+			return key;
+		}
 	}
 }

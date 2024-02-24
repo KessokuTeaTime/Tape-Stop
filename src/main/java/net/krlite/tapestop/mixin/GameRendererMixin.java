@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.systems.VertexSorter;
 import net.krlite.tapestop.TapeStop;
 import net.krlite.tapestop.TapeStopRenderer;
+import net.krlite.tapestop.config.TapeStopConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.GameRenderer;
@@ -23,7 +24,14 @@ public class GameRendererMixin {
 	@Unique
 	private boolean skipped = false;
 
-	@Redirect(method = "render", at = @At(value = "FIELD", target = "Lnet/minecraft/client/MinecraftClient;skipGameRender:Z", opcode = Opcodes.GETFIELD))
+	@Redirect(
+			method = "render",
+			at = @At(
+					value = "FIELD",
+					target = "Lnet/minecraft/client/MinecraftClient;skipGameRender:Z",
+					opcode = Opcodes.GETFIELD
+			)
+	)
 	private boolean skipGameRender(MinecraftClient client) {
 		boolean skip = TapeStop.shouldTapeStop(client.currentScreen);
 		if (skip) {
@@ -40,7 +48,7 @@ public class GameRendererMixin {
 			matrixStack.translate(0.0F, 0.0F, -2000.0F);
 			RenderSystem.applyModelViewMatrix();
 
-			if (TapeStop.CONFIG.panorama() && TapeStop.cubeMapRenderer() != null) {
+			if (TapeStop.CONFIG.visual.backgroundStyle == TapeStopConfig.BackgroundStyle.PANORAMA && TapeStop.cubeMapRenderer() != null) {
 				panorama: {
 					TapeStopRenderer.renderPanorama();
 				}
@@ -50,7 +58,7 @@ public class GameRendererMixin {
 				}
 			}
 
-			else {
+			if (TapeStop.CONFIG.visual.backgroundStyle == TapeStopConfig.BackgroundStyle.PURE_COLOR) {
 				grassBlock: {
 					TapeStopRenderer.renderGrassBlock(context);
 				}

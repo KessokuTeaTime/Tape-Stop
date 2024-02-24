@@ -1,5 +1,7 @@
 package net.krlite.tapestop;
 
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.krlite.tapestop.config.TapeStopConfig;
 import net.minecraft.client.MinecraftClient;
@@ -23,7 +25,12 @@ import java.util.Random;
 public class TapeStop implements ModInitializer {
 	public static final String NAME = "Tape Stop", ID = "tapestop";
 	public static final Logger LOGGER = LoggerFactory.getLogger(ID);
-	public static final TapeStopConfig CONFIG = new TapeStopConfig();
+	public static final TapeStopConfig CONFIG;
+
+	static {
+		AutoConfig.register(TapeStopConfig.class, Toml4jConfigSerializer::new);
+		CONFIG = AutoConfig.getConfigHolder(TapeStopConfig.class).get();
+	}
 
 	private static final Class<?>[] excluded = new Class[]{
 			TitleScreen.class, DemoScreen.class, AccessibilityOnboardingScreen.class, SplashOverlay.class,
@@ -48,21 +55,20 @@ public class TapeStop implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		CONFIG.save();
 		updateColors();
 	}
 
 	public static boolean shouldTapeStop(@Nullable Screen screen) {
-		if (!CONFIG.enabled() || MinecraftClient.getInstance().world == null) return false;
+		if (!CONFIG.enabled || MinecraftClient.getInstance().world == null) return false;
 
-		if (CONFIG.whenMinimized() && GLFW.glfwGetWindowAttrib(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_ICONIFIED) == GLFW.GLFW_TRUE) return true;
+		if (CONFIG.trigger.whenMinimized && GLFW.glfwGetWindowAttrib(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_ICONIFIED) == GLFW.GLFW_TRUE) return true;
 
-		if (CONFIG.whenLostFocus() && !MinecraftClient.getInstance().isWindowFocused()) return true;
+		if (CONFIG.trigger.whenLostFocus && !MinecraftClient.getInstance().isWindowFocused()) return true;
 
-		if (screen == null && CONFIG.afterGameTimeout() && isTimeout()) return true;
+		if (screen == null && CONFIG.trigger.afterGameTimeout && isTimeout()) return true;
 
 		if (screen != null && !Arrays.asList(excluded).contains(screen.getClass())
-					&& CONFIG.afterGUITimeout() && isTimeout()) return true;
+					&& CONFIG.trigger.afterGUITimeout && isTimeout()) return true;
 
 		tapeStopTime = Util.getMeasuringTimeMs();
 		updateColors();
@@ -107,7 +113,7 @@ public class TapeStop implements ModInitializer {
 	}
 
 	public static boolean isTimeout() {
-		return Util.getMeasuringTimeMs() - lastActionTime > CONFIG.timeoutMs();
+		return Util.getMeasuringTimeMs() - lastActionTime > CONFIG.timeoutMs;
 	}
 
 	public static void action() {

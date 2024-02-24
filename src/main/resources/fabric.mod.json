@@ -23,7 +23,7 @@
       "net.krlite.tapestop.TapeStop"
     ],
     "modmenu": [
-      "net.krlite.tapestop.config.modmenu.TapeStopModMenuImpl"
+      "net.krlite.tapestop.config.modmenu.TapeStopModMenuIntegration"
     ]
   },
   "mixins": [
