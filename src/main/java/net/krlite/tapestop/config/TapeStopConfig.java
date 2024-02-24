@@ -8,11 +8,13 @@ import net.krlite.tapestop.TapeStop;
 import org.jetbrains.annotations.NotNull;
 
 @Config(name = "tapestop")
+@Config.Gui.Background(Config.Gui.Background.TRANSPARENT)
 public class TapeStopConfig implements ConfigData {
+	@ConfigEntry.Gui.Tooltip
 	public boolean enabled = true;
-
+	@ConfigEntry.Gui.Tooltip
 	public boolean debugInfoEnabled = true;
-
+	@ConfigEntry.Gui.Tooltip
 	@ConfigEntry.BoundedDiscrete(min = 1000, max = 1000 * 60 * 5)
 	public long timeoutMs = 1000 * 30;
 
@@ -25,9 +27,13 @@ public class TapeStopConfig implements ConfigData {
 	public Visual visual = new Visual();
 
 	public static class Trigger {
+		@ConfigEntry.Gui.Tooltip
 		public boolean whenMinimized = true;
+		@ConfigEntry.Gui.Tooltip
 		public boolean whenLostFocus = true;
+		@ConfigEntry.Gui.Tooltip
 		public boolean afterGUITimeout = true;
+		@ConfigEntry.Gui.Tooltip
 		public boolean afterGameTimeout = true;
 	}
 

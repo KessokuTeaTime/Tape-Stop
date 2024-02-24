@@ -4,33 +4,32 @@
   "text.autoconfig.tapestop.category.default": "General",
 
   "text.autoconfig.tapestop.option.enabled"        : "Enabled",
-  "text.autoconfig.tapestop.option.enabled.tooltip": "Whether to stop rendering as you leave",
+  "text.autoconfig.tapestop.option.enabled.@Tooltip": "Whether to stop rendering as you leave",
 
-  "text.autoconfig.tapestop.debug.enabled"        : "Debug Info",
-  "text.autoconfig.tapestop.debug.enabled.tooltip": "Whether to print debug messages to the console",
+  "text.autoconfig.tapestop.option.debugInfoEnabled"        : "Prints Debug Info",
+  "text.autoconfig.tapestop.option.debugInfoEnabled.@Tooltip": "Whether to print debug messages to the console",
 
-  "text.autoconfig.tapestop.option.timeout_ms"        : "Timeout",
-  "text.autoconfig.tapestop.option.timeout_ms.tooltip": "§cMilliseconds\nHow long to wait before tape stops",
+  "text.autoconfig.tapestop.option.timeoutMs"        : "Timeout",
+  "text.autoconfig.tapestop.option.timeoutMs.@Tooltip": "§eMilliseconds§r\nHow long to wait before tape stops",
 
   "text.autoconfig.tapestop.category.trigger": "Trigger",
 
-  "text.autoconfig.tapestop.trigger.when_minimized"        : "When Minimized",
-  "text.autoconfig.tapestop.trigger.when_minimized.tooltip": "Whether to tape stop when the window is minimized",
+  "text.autoconfig.tapestop.option.trigger.whenMinimized"        : "When Minimized",
+  "text.autoconfig.tapestop.option.trigger.whenMinimized.@Tooltip": "Whether to tape stop when the window is minimized",
 
-  "text.autoconfig.tapestop.trigger.when_lost_focus"        : "When Lost Focus",
-  "text.autoconfig.tapestop.trigger.when_lost_focus.tooltip": "Whether to tape stop when the window lost focus",
+  "text.autoconfig.tapestop.option.trigger.whenLostFocus"        : "When Lost Focus",
+  "text.autoconfig.tapestop.option.trigger.whenLostFocus.@Tooltip": "Whether to tape stop when the window lost focus",
 
-  "text.autoconfig.tapestop.trigger.after_gui_timeout"        : "After GUI Timeout",
-  "text.autoconfig.tapestop.trigger.after_gui_timeout.tooltip": "Whether to tape stop when the game is in a GUI screen(inventory, pause menu, etc.) and reaches the timeout specified above",
+  "text.autoconfig.tapestop.option.trigger.afterGUITimeout"        : "After GUI Timeout",
+  "text.autoconfig.tapestop.option.trigger.afterGUITimeout.@Tooltip": "Whether to tape stop when the game is in a GUI screen(inventory, pause menu, etc.) and reaches the timeout specified above",
 
-  "text.autoconfig.tapestop.trigger.after_game_timeout"        : "After Game Timeout",
-  "text.autoconfig.tapestop.trigger.after_game_timeout.tooltip": "Whether to tape stop when the game is not in a GUI screen and reaches the timeout specified above",
+  "text.autoconfig.tapestop.option.trigger.afterGameTimeout"        : "After Game Timeout",
+  "text.autoconfig.tapestop.option.trigger.afterGameTimeout.@Tooltip": "Whether to tape stop when the game is not in a GUI screen and reaches the timeout specified above",
 
   "text.autoconfig.tapestop.category.visual": "Visual",
 
-  "text.autoconfig.tapestop.visual.panorama"        : "Panorama",
-  "text.autoconfig.tapestop.visual.panorama.tooltip": "Whether to render the panorama background while tape stopped",
+  "text.autoconfig.tapestop.option.visual.backgroundStyle": "Background Style",
 
   "config.tapestop.background_style.pure_color": "Pure Color",
-  "config.tapestop.background_style.panorama": "Panorama"
+  "config.tapestop.background_style.panorama"  : "Panorama"
 }
