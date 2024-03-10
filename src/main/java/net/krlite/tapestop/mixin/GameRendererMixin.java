@@ -35,6 +35,10 @@ public class GameRendererMixin {
 	private boolean skipGameRender(MinecraftClient client) {
 		boolean skip = TapeStop.shouldTapeStop(client.currentScreen);
 		if (skip) {
+			if (!skipped) {
+				TapeStop.CONFIG.load();
+			}
+
 			Window window = MinecraftClient.getInstance().getWindow();
 			RenderSystem.clear(256, MinecraftClient.IS_SYSTEM_MAC);
 
@@ -48,7 +52,7 @@ public class GameRendererMixin {
 			matrixStack.translate(0.0F, 0.0F, -2000.0F);
 			RenderSystem.applyModelViewMatrix();
 
-			if (TapeStop.CONFIG.visual.backgroundStyle == TapeStopConfig.BackgroundStyle.PANORAMA && TapeStop.cubeMapRenderer() != null) {
+			if (TapeStop.CONFIG.get().visual.backgroundStyle == TapeStopConfig.BackgroundStyle.PANORAMA && TapeStop.cubeMapRenderer() != null) {
 				panorama: {
 					TapeStopRenderer.renderPanorama();
 				}
@@ -58,7 +62,7 @@ public class GameRendererMixin {
 				}
 			}
 
-			if (TapeStop.CONFIG.visual.backgroundStyle == TapeStopConfig.BackgroundStyle.PURE_COLOR) {
+			if (TapeStop.CONFIG.get().visual.backgroundStyle == TapeStopConfig.BackgroundStyle.PURE_COLOR) {
 				grassBlock: {
 					TapeStopRenderer.renderGrassBlock(context);
 				}
