@@ -3,15 +3,16 @@
   "id": "tapestop",
   "version": "${version}",
 
-  "name": "Tape Stop",
+  "name": "${display.name}",
   "description": "Stops anything from rendering as you leave.",
   "authors": [
+    "Kessoku Tea Time",
     "KrLite"
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/tape-stop",
-    "sources": "https://github.com/KrLite/Mod.Tape-Stop",
-    "issues": "https://github.com/KrLite/Mod.Tape-Stop/issues"
+    "sources": "https://github.com/KessokuTeaTime/Tape-Stop",
+    "issues": "https://github.com/KessokuTeaTime/Tape-Stop/issues"
   },
 
   "license": "GPL-3.0",
@@ -20,10 +21,10 @@
   "environment": "client",
   "entrypoints": {
     "main": [
-      "net.krlite.tapestop.TapeStop"
+      "band.kessokuteatime.tapestop.TapeStop"
     ],
     "modmenu": [
-      "net.krlite.tapestop.config.modmenu.TapeStopModMenuIntegration"
+      "band.kessokuteatime.tapestop.config.modmenu.TapeStopModMenuIntegration"
     ]
   },
   "mixins": [

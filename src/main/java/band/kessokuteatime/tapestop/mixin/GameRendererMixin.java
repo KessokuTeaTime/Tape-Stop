@@ -1,10 +1,10 @@
-package net.krlite.tapestop.mixin;
+package band.kessokuteatime.tapestop.mixin;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.systems.VertexSorter;
-import net.krlite.tapestop.TapeStop;
-import net.krlite.tapestop.TapeStopRenderer;
-import net.krlite.tapestop.config.TapeStopConfig;
+import band.kessokuteatime.tapestop.TapeStop;
+import band.kessokuteatime.tapestop.TapeStopRenderer;
+import band.kessokuteatime.tapestop.config.TapeStopConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.GameRenderer;

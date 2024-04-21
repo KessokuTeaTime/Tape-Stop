@@ -1,6 +1,6 @@
-package net.krlite.tapestop.mixin;
+package band.kessokuteatime.tapestop.mixin;
 
-import net.krlite.tapestop.TapeStop;
+import band.kessokuteatime.tapestop.TapeStop;
 import net.minecraft.client.Keyboard;
 import net.minecraft.client.Mouse;
 import org.spongepowered.asm.mixin.Mixin;

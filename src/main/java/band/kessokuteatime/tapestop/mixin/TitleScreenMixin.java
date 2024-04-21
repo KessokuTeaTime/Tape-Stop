@@ -1,6 +1,6 @@
-package net.krlite.tapestop.mixin;
+package band.kessokuteatime.tapestop.mixin;
 
-import net.krlite.tapestop.TapeStop;
+import band.kessokuteatime.tapestop.TapeStop;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.RotatingCubeMapRenderer;
 import net.minecraft.client.gui.screen.TitleScreen;

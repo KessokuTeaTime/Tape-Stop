@@ -1,10 +1,10 @@
-package net.krlite.tapestop.config;
+package band.kessokuteatime.tapestop.config;
 
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import me.shedaniel.clothconfig2.gui.entries.SelectionListEntry;
-import net.krlite.tapestop.TapeStop;
+import band.kessokuteatime.tapestop.TapeStop;
 import org.jetbrains.annotations.NotNull;
 
 @Config(name = "tapestop")

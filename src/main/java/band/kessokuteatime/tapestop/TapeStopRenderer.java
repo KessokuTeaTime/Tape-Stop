@@ -1,4 +1,4 @@
-package net.krlite.tapestop;
+package band.kessokuteatime.tapestop;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;

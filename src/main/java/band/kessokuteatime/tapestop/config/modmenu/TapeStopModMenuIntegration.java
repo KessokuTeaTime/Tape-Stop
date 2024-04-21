@@ -1,10 +1,10 @@
-package net.krlite.tapestop.config.modmenu;
+package band.kessokuteatime.tapestop.config.modmenu;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.autoconfig.AutoConfig;
-import net.krlite.tapestop.TapeStop;
-import net.krlite.tapestop.config.TapeStopConfig;
+import band.kessokuteatime.tapestop.TapeStop;
+import band.kessokuteatime.tapestop.config.TapeStopConfig;
 
 public class TapeStopModMenuIntegration implements ModMenuApi {
 	@Override

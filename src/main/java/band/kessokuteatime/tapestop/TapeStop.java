@@ -1,10 +1,10 @@
-package net.krlite.tapestop;
+package band.kessokuteatime.tapestop;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigHolder;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ModInitializer;
-import net.krlite.tapestop.config.TapeStopConfig;
+import band.kessokuteatime.tapestop.config.TapeStopConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.RotatingCubeMapRenderer;
 import net.minecraft.client.gui.screen.*;

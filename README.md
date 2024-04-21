@@ -1,10 +1,10 @@
-### <p align=right>[`→` Modrinth](https://modrinth.com/mod/tapestop)</p>
+### <p align=right>[`→` CurseForge](https://www.curseforge.com/minecraft/mc-mods/tapestop)&ensp;[`→` Modrinth](https://modrinth.com/mod/tapestop)</p>
 
 # Tape Stop
 
 At your wish! **Tape Stop** prevents the game from rendering as you leave, which may result in a much better performance when you left the game window alone.
 
-You can configure a various of things in the **Mod Menu.** Generously, **Tape Stop** provides 2 ways to decorate your window when the game stopped rendering.
+You can configure various things through the **Mod Menu.** Generously, **Tape Stop** provides 2 ways to decorate your window when the game stopped rendering.
 
 <blockquote>
   <ol>
