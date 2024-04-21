@@ -1,4 +1,4 @@
-### <p align=right>[Main Branch `←`](https://github.com/KrLite/Mod.Tape-Stop)&emsp;[`→` Modrinth](https://modrinth.com/mod/tape-stop)</p>
+### <p align=right>[Main Branch `←`](https://github.com/KessokuTeaTime/Tape-Stop)&emsp;[`→` CurseForge](https://www.curseforge.com/minecraft/mc-mods/tapestop)&ensp;[`→` Modrinth](https://modrinth.com/mod/tape-stop)</p>
 
 ### Tape Stop for Fabric `1.19.4`
 
