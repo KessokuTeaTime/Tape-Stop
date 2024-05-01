@@ -62,7 +62,7 @@ public class GameRendererMixin {
 				}
 			}
 
-			if (TapeStop.CONFIG.get().visual.backgroundStyle == TapeStopConfig.BackgroundStyle.PURE_COLOR) {
+			if (TapeStop.CONFIG.get().visual.backgroundStyle == TapeStopConfig.BackgroundStyle.COLOR) {
 				grassBlock: {
 					TapeStopRenderer.renderGrassBlock(context);
 				}

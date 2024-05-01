@@ -40,6 +40,9 @@ dependencies {
 
 	modApi(libs.cloth.config)
 	modApi(libs.modmenu)
+
+	modImplementation(libs.autoconfig.toml)
+	include(libs.autoconfig.toml)
 }
 
 java {

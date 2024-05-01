@@ -31,6 +31,7 @@ fabric-api = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.r
 
 cloth-config = { group = "me.shedaniel.cloth", name = "cloth-config-fabric", version.ref = "cloth-config" }
 modmenu = { group = "com.terraformersmc", name = "modmenu", version.ref = "modmenu" }
+autoconfig-toml = { group = "com.github.TheRandomLabs", name = "AutoConfig-TOML", version = "autoconfig-3.x.x-fabric-SNAPSHOT" }
 
 [plugins]
 fabric-loom = { id = "fabric-loom", version.ref = "fabric-loom" }

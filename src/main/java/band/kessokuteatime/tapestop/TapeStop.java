@@ -1,5 +1,6 @@
 package band.kessokuteatime.tapestop;
 
+import com.therandomlabs.autoconfigtoml.TOMLConfigSerializer;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigHolder;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
@@ -29,7 +30,7 @@ public class TapeStop implements ModInitializer {
 	public static final ConfigHolder<TapeStopConfig> CONFIG;
 
 	static {
-		AutoConfig.register(TapeStopConfig.class, Toml4jConfigSerializer::new);
+		AutoConfig.register(TapeStopConfig.class, TOMLConfigSerializer::new);
 		CONFIG = AutoConfig.getConfigHolder(TapeStopConfig.class);
 	}
 
