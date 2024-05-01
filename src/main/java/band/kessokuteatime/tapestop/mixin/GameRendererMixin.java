@@ -57,7 +57,7 @@ public class GameRendererMixin {
 					TapeStopRenderer.renderPanorama();
 				}
 
-				if (!skipped) {
+				if (TapeStop.CONFIG.get().debugInfoEnabled && !skipped) {
 					TapeStop.LOGGER.info("Tape stopped. Rendering panorama");
 				}
 			}
@@ -67,7 +67,7 @@ public class GameRendererMixin {
 					TapeStopRenderer.renderGrassBlock(context);
 				}
 
-				if (!skipped) {
+				if (TapeStop.CONFIG.get().debugInfoEnabled && !skipped) {
 					TapeStop.LOGGER.info("Tape stopped. Rendering overlay with background color " + String.format("#%06x", TapeStop.color() & 0xFFFFFF).toUpperCase(Locale.ROOT));
 				}
 			}

@@ -1,7 +1,7 @@
 [versions]
 maven-group = "net.krlite"
 archives-name = "tapestop"
-mod = "3.1.0"
+mod = "4.0.0"
 loader = "fabric"
 
 minecraft = "1.20"
